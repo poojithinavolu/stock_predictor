@@ -1,0 +1,153 @@
+/* static/style.css */
+
+/* Base Dark Theme */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #000;
+  color: #eee;
+  line-height: 1.6;
+}
+
+/* Container */
+.container, form, .analysis, .chart-container, .modal-content {
+  background-color: #111;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 900px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+.container:hover,
+form:hover,
+.analysis:hover,
+.chart-container:hover,
+.modal-content:hover {
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+}
+
+/* Headings */
+h1, h2 {
+  color: #0ff;
+  text-align: center;
+  text-shadow: 0 0 8px #0ff;
+}
+
+/* Form Inputs */
+input[type="text"],
+input[type="date"],
+input[type="number"] {
+  width: calc(100% - 24px);
+  padding: 10px;
+  margin: 8px 0;
+  background: #222;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: #eee;
+  transition: border-color 0.2s ease;
+}
+input:focus {
+  outline: none;
+  border-color: #0ff;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+}
+
+/* Buttons */
+button {
+  display: inline-block;
+  padding: 12px 20px;
+  margin: 10px 5px;
+  background: linear-gradient(45deg, #00e5ff, #00b8d4);
+  border: none;
+  border-radius: 6px;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+  transform: scale(0);
+  transition: transform 0.5s ease;
+}
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 16px rgba(0, 255, 255, 0.6);
+}
+button:hover::before {
+  transform: scale(1);
+}
+
+/* Chart Container */
+.chart-container {
+  padding: 10px;
+  background: #111;
+}
+canvas {
+  background: #000;
+}
+
+/* Chat Box */
+#chatBox {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 4px;
+  height: 300px;
+  overflow-y: auto;
+  padding: 10px;
+}
+#chatBox p {
+  margin: 8px 0;
+}
+#chatBox strong {
+  color: #0ff;
+}
+
+/* Links */
+a {
+  color: #0ff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: #88ffff;
+}
+
+/* Modal (if used) */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-content {
+  max-width: 600px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #111;
+}
+::-webkit-scrollbar-thumb {
+  background: #0ff;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00b8d4;
+}

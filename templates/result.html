@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Forecast Results for {{ ticker }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h1>Forecast Results: {{ ticker }}</h1>
+
+  <div class="analysis">
+    <h2>Forecast Analysis</h2>
+    <p>{{ analysis }}</p>
+  </div>
+
+  <div class="chart-container">
+    <canvas id="priceChart"></canvas>
+  </div>
+
+  <h2>Ask a Question</h2>
+  <div id="chatBox"></div>
+  <input type="text" id="questionInput" placeholder="Your question..." size="50">
+  <button onclick="sendQuestion()">Ask</button>
+  <br><br>
+  <a href="{{ url_for('index') }}">&larr; Back</a>
+
+  <script>
+    const histDates  = JSON.parse(`{{ hist_dates  | tojson | safe }}`);
+    const histPrices = JSON.parse(`{{ hist_prices | tojson | safe }}`);
+    const futDates   = JSON.parse(`{{ fut_dates   | tojson | safe }}`);
+    const futPrices  = JSON.parse(`{{ fut_prices  | tojson | safe }}`);
+
+
+    const labels       = histDates.concat(futDates);
+    const actualData   = histPrices.concat(Array(futDates.length).fill(null));
+    const forecastData = Array(histDates.length).fill(null).concat(futPrices);
+
+    new Chart(
+      document.getElementById('priceChart').getContext('2d'),
+      {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'Actual Close Price',
+              data: actualData,
+              borderColor: 'blue',
+              fill: false,
+            },
+            {
+              label: 'Forecasted Price',
+              data: forecastData,
+              borderColor: 'orange',
+              borderDash: [5,5],
+              fill: false,
+            }
+          ]
+        },
+        options: {
+          scales: {
+            x: { title: { display: true, text: 'Date' } },
+            y: { title: { display: true, text: 'Price (USD)' } }
+          }
+        }
+      }
+    );
+
+    function sendQuestion() {
+      const q = document.getElementById('questionInput').value.trim();
+      if (!q) return;
+      const box = document.getElementById('chatBox');
+      box.innerHTML += `<p><strong>You:</strong> ${q}</p>`;
+      fetch("{{ url_for('ask') }}", {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({question:q})
+      })
+      .then(r=>r.json())
+      .then(d=>{
+        box.innerHTML += `<p><strong>Advisor:</strong> ${d.answer}</p>`;
+        box.scrollTop = box.scrollHeight;
+      });
+      document.getElementById('questionInput').value = '';
+    }
+  </script>
+</body>
+</html>
