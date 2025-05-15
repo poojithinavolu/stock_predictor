@@ -1,7 +1,3 @@
-Here’s a **detailed, polished `README.md`** tailored for your financial forecasting assistant project. It includes everything GitHub users typically expect: overview, features, tech stack, usage guide, setup, project structure, and more.
-
----
-
 ```markdown
 # 📈 Financial Forecasting Assistant
 
@@ -227,6 +223,6 @@ A: Yes! Deploy it to Heroku, Render, or Replit. Let me know if you need a `Procf
 ## 👨‍💻 Author
 
 **Your Name**
-[GitHub](https://github.com/your-username) • [LinkedIn](https://linkedin.com/in/your-profile)
+[GitHub](https://github.com/poojithinavolu/) • [LinkedIn](https://www.linkedin.com/in/poojith-inavolu-469320277/)
 
 ---
