@@ -140,27 +140,14 @@ Visit [http://127.0.0.1:5000/](http://127.0.0.1:5000/) in your browser.
 
    * Users can interact with a chatbot and get financial advice/insights using GPT-2.
 
----
+## 📸 Screenshots
 
-## ✨ Example Screenshots
+### 📝 Forecast Input Form
+![Forecast Input Form](screenshots/Screenshot%202025-05-15%20202434.png)
 
-<details>
-<summary>📷 Forecasting Page</summary>
+### 📊 Forecast Output with Chart and Analysis
+![Forecast Output Chart](screenshots/Screenshot%202025-05-15%20202510.png)
 
-![Forecast Form](https://via.placeholder.com/800x400?text=Form+Example)
-
-</details>
-
-<details>
-<summary>📷 Forecast Output & Chatbot</summary>
-
-![Forecast Output](https://via.placeholder.com/800x400?text=Chart+and+Chatbot)
-
-</details>
-
-> Replace with actual screenshots after deploying locally.
-
----
 
 ## 🤖 Notes on AI Components
 
